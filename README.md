@@ -36,4 +36,30 @@ Finaly, we loaded the pre-trained small whisper model from the openAi checkpoint
 
 
 ## Model Fine-Tuning
+In order to fine tune the pretrained model, we used a modal-centric approach. We tried different hyperparameters, and the ones that gave us the best performance are the following:
 
+
+
+
+## Setup
+we refactored the program into three pipelines:
+
+### Feature Engineering Pipeline [point to it on github maybe]
+In this pipeline, we process the dataset common_voice, we compress it to reduce its size and we upload it to our google drive. This pipeline can be run on CPUs in an efficient way and fastly. The dataset can be then loaded in the training pipeline using gdown library and just in 1 minute.  
+
+### Training pipeline [point to it on github maybe]
+The training pipeling lunch the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and we evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning.
+
+### Batch Inference Pipeline [point to it on github maybe]
+In this pipeline, we deploy our fine tuned model and we provide stakeholders a UI to test our model. It offers multiple facilities: Uploading an audio, a video, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input.
+
+## Test Our model
+
+
+[[Whisper Transcriber]]([https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish))
+[[Model Card]]([])
+
+## Source Code
+[[Feature Engineering Pipeline]]([])
+[[Training Pipeline]]([])
+[[Batch Inference Pipeline]]([])
