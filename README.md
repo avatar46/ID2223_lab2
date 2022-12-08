@@ -44,22 +44,29 @@ In order to fine tune the pretrained model, we used a modal-centric approach. We
 ## Setup
 we refactored the program into three pipelines:
 
-### Feature Engineering Pipeline [point to it on github maybe]
-In this pipeline, we process the dataset common_voice, we compress it to reduce its size and we upload it to our google drive. This pipeline can be run on CPUs in an efficient way and fastly. The dataset can be then loaded in the training pipeline using gdown library and just in 1 minute.  
+### Feature Engineering Pipeline 
+In the [feature pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whisper_feature_pipeline.ipynb), we process the Swedish language dataset downloaded from [Common Voice](https://huggingface.co/datasets/mozilla-foundation/common_voice_11_0) and store it in Hopsworks. Since, the dataset is quite large(about 16.7 GB), we compress it to reduce its size. This pipeline can be run on CPUs in an efficient way and fastly. The dataset can be then loaded in the training pipeline using gdown library and just in 1 minute.  
 
-### Training pipeline [point to it on github maybe]
-The training pipeling lunch the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and we evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning.
+### Training pipeline 
+The [training pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whisper_training_pipeline.ipynb) launches the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning. 
 
-### Batch Inference Pipeline [point to it on github maybe]
-In this pipeline, we deploy our fine tuned model and we provide stakeholders a UI to test our model. It offers multiple facilities: Uploading an audio, a video, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input.
+### Inference UI 
+After training, we deploy our fine tuned model and we provide stakeholders a UI to test our model. The inference UI can be accessed [here](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish), and we also uploaded our model on [Huggingface model](https://huggingface.co/Yilin98/whisper-small-hi).  
+Our interactive UI, offers multiple facilities: Uploading an audio, a video, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input. In addition, users can also trim their recorded/uploaded audio.
 
-## Test Our model
+## Results
+We trained our model for 4000 steps, and in each 500 steps we evaluate model's performance. As the table below shows, the WER(word error rate) is decreasing almost after each 500 steps and reach the lowest at the 4000 step.
 
+| **Step** | **WER** |
+|----------|---------|
+| 500      | 23.90   |
+| 1000     | 22.42   |
+| 2000     | 20.94   |
+| 3000     | 20.38   |
+| 4000     | 19.94   |
 
-[[Whisper Transcriber]]([https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish])
-[[Model Card]]([])
+## Discussion: Further Improvements
 
-## Source Code
-[[Feature Engineering Pipeline]]([])
-[[Training Pipeline]]([])
-[[Batch Inference Pipeline]]([])
+### Model-centric Approach
+
+### Data-centric Approach
