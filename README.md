@@ -56,7 +56,7 @@ In this pipeline, we deploy our fine tuned model and we provide stakeholders a U
 ## Test Our model
 
 
-[[Whisper Transcriber]]([https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish))
+[[Whisper Transcriber]]([https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish]))
 [[Model Card]]([])
 
 ## Source Code
