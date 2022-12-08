@@ -29,7 +29,9 @@ There are five model sizes, four with English-only versions, offering speed and 
 
 We used the small Whisper model with 255M parameters and we followed the same steps as in the colab example.
 First, we loaded the pre-trained FeatureExtractor and the pre-trained tokenizer and used it for fine-tuning without any further modifications. We have just set the target language to swedish and the task to transcription. These arguments inform the tokenizer to prefix the language and task tokens to the start of encoded label sequences.Then, we combined both into one processor to make it easier. 
+
 Next, we created the DataCollector treating the data in an independent schema composed of inputs and labels, and we the WER metric to evaluate the performance of the fine-tuned model at the end.
+
 Finaly, we loaded the pre-trained small whisper model from the openAi checkpoint.
 
 
