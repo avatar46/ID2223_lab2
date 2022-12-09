@@ -51,7 +51,7 @@ In the [feature pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/Feat
 The [training pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/Swedish_fine_tune_whisper_Transcriber.ipynb) launches the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning. 
 
 ### Inference UI 
-After training, we deploy our fine tuned model and we provide stakeholders a [inference UI](https://huggingface.co/spaces/ZinebSN/Transcriber) on Huggingface to test our model. You can also access our trained model card on [Huggingface model]((https://huggingface.co/ZinebSN/whisper-small-swedish-Test-3000).  
+After training, we deploy our fine tuned model and we provide stakeholders a [inference UI](https://huggingface.co/spaces/ZinebSN/Transcriber) on Huggingface to test our model. You can also access our trained model card on [Huggingface model](https://huggingface.co/ZinebSN/whisper-small-swedish-Test-3000).  
 Our interactive UI, offers multiple facilities: Uploading an audio, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input. In addition, users can also trim their recorded/uploaded audio.
 
 ## Results
