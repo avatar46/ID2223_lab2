@@ -51,7 +51,7 @@ In the [feature pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whis
 The [training pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whisper_training_pipeline.ipynb) launches the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning. 
 
 ### Inference UI 
-After training, we deploy our fine tuned model and we provide stakeholders a UI to test our model. The inference UI can be accessed [here](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish), and we also uploaded our model on [Huggingface model](https://huggingface.co/Yilin98/whisper-small-hi).  
+After training, we deploy our fine tuned model and we provide stakeholders a [inference UI](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish) on Huggingface to test our model. You can also access our trained model on [Huggingface model](https://huggingface.co/Yilin98/whisper-small-hi).  
 Our interactive UI, offers multiple facilities: Uploading an audio, a video, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input. In addition, users can also trim their recorded/uploaded audio.
 
 ## Results
