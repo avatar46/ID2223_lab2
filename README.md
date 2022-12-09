@@ -38,7 +38,16 @@ Finaly, we loaded the pre-trained small whisper model from the openAi checkpoint
 ## Model Fine-Tuning
 In order to fine tune the pretrained model, we used a modal-centric approach. We tried different hyperparameters, and the ones that gave us the best performance are the following:
 
-
+* per_device_train_batch_size=16,
+* gradient_accumulation_steps=1,  # increase by 2x for every 2x decrease in batch size
+* learning_rate=1e-5,
+* warmup_steps=500,
+* max_steps=3000,
+* per_device_eval_batch_size=16,
+* save_steps=1000,
+* eval_steps=1000,
+* ogging_steps=1
+    
 
 
 ## Setup
