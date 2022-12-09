@@ -68,5 +68,9 @@ We trained our model for 4000 steps, and in each 500 steps we evaluate model's p
 ## Discussion: Further Improvements
 
 ### Model-centric Approach
+* We can use a larger model with more layers to get better performance, e.g. whisper-medium or whisper-large. But this will require much more time to train the model.
+
+* The selection of different hyperparameters will also affect the performance. We can select the parameters using random search and grid search.
 
 ### Data-centric Approach
+* For this approach, we can add new data sources to train a better model. We can add other public Swedish audio dataset such as [NST Swedish ASR Database](https://www.nb.no/sprakbanken/en/resource-catalogue/oai-nb-no-sbr-56/) and [Spoken Corpora](https://www.clarin.eu/resource-families/spoken-corpora).
