@@ -45,17 +45,17 @@ In order to fine tune the pretrained model, we used a modal-centric approach. We
 we refactored the program into three pipelines:
 
 ### Feature Engineering Pipeline 
-In the [feature pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whisper_feature_pipeline.ipynb), we process the Swedish language dataset downloaded from [Common Voice](https://huggingface.co/datasets/mozilla-foundation/common_voice_11_0) and store it in Hopsworks. Since, the dataset is quite large(about 16.7 GB), we compress it to reduce its size. This pipeline can be run on CPUs in an efficient way and fastly. The dataset can be then loaded in the training pipeline using gdown library and just in 1 minute.  
+In the [feature pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/Features_Engineering.ipynb), we process the Swedish language dataset downloaded from [Common Voice](https://huggingface.co/datasets/mozilla-foundation/common_voice_11_0) and store it in Hopsworks or Google Drive. Since, the dataset is quite large(about 16.7 GB), we compress it to reduce its size. This pipeline can be run on CPUs in an efficient way and fastly. The dataset can be then loaded in the training pipeline using gdown library and just in 1 minute from the compressed file stored on google drive.  
 
 ### Training pipeline 
-The [training pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/whisper_training_pipeline.ipynb) launches the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning. 
+The [training pipeline](https://github.com/avatar46/ID2223_lab2/blob/main/Swedish_fine_tune_whisper_Transcriber.ipynb) launches the fine tuning part of the pre-trained whisper model after loading the data. We save checkpoints in each 500 steps and evalute the performance of the model. The checkpoints are very large so that they cannot fit google drive capacity, so they are pushed directly to HuggingFace hub. (Check if .git ignore file on the local repo cloned from the hub contains chackpoints-* and if yes delete it). The checkpoints will help us to resume from when google colab stop avoid taking over the training from the beginning. 
 
 ### Inference UI 
-After training, we deploy our fine tuned model and we provide stakeholders a [inference UI](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish) on Huggingface to test our model. You can also access our trained model on [Huggingface model](https://huggingface.co/Yilin98/whisper-small-hi).  
-Our interactive UI, offers multiple facilities: Uploading an audio, a video, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input. In addition, users can also trim their recorded/uploaded audio.
+After training, we deploy our fine tuned model and we provide stakeholders a [inference UI](https://huggingface.co/spaces/ZinebSN/Transcriber) on Huggingface to test our model. You can also access our trained model card on [Huggingface model]([https://huggingface.co/Yilin98/whisper-small-hi](https://huggingface.co/ZinebSN/whisper-small-swedish-Test-3000).  
+Our interactive UI, offers multiple facilities: Uploading an audio, real time recording or entering a Youtube url, and it outputs the transcription of the audio signal passed as input. In addition, users can also trim their recorded/uploaded audio.
 
 ## Results
-We trained our model for 4000 steps, and in each 500 steps we evaluate model's performance. As the table below shows, the WER(word error rate) is decreasing almost after each 500 steps and reach the lowest at the 4000 step.
+We trained our initial model for 4000 steps, and in each 500 steps we evaluate model's performance. As the table below shows, the WER(word error rate) is decreasing almost after each 500 steps and reach the lowest at the 4000 step.
 
 | **Step** | **WER** |
 |----------|---------|
@@ -64,6 +64,13 @@ We trained our model for 4000 steps, and in each 500 steps we evaluate model's p
 | 2000     | 20.94   |
 | 3000     | 20.38   |
 | 4000     | 19.94   |
+
+After fine tuning the model using model-centric approach, we got the following results in less training time:
+| **Step** |  **WER**  |
+|----------|-----------|
+| 1000     | 21.4245   |
+| 2000     | 20.0882   |
+| 3000     | 19.6042   |
 
 ## Discussion: Further Improvements
 
@@ -74,3 +81,4 @@ We trained our model for 4000 steps, and in each 500 steps we evaluate model's p
 
 ### Data-centric Approach
 * For this approach, we can add new data sources to train a better model. We can add other public Swedish audio dataset such as [NST Swedish ASR Database](https://www.nb.no/sprakbanken/en/resource-catalogue/oai-nb-no-sbr-56/) and [Spoken Corpora](https://www.clarin.eu/resource-families/spoken-corpora).
+* We can also do some sort of data augmentation on the audios, by adding some noise for example.
