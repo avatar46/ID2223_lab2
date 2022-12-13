@@ -81,6 +81,13 @@ After fine tuning the model using model-centric approach, we got the following r
 | 2000     | 20.0882   |
 | 3000     | 19.6042   |
 
+The link to our two models and their inference UIs:
+
+Original model: [Huggingface model](https://huggingface.co/Yilin98/whisper-small-hi), [inference UI](https://huggingface.co/spaces/Yilin98/Whisper-Small-Swedish)
+
+New model: [Huggingface model](https://huggingface.co/ZinebSN/whisper-small-swedish-Test-3000), [inference UI](https://huggingface.co/spaces/ZinebSN/Transcriber)
+
+
 ## Discussion: Further Improvements
 
 ### Model-centric Approach
